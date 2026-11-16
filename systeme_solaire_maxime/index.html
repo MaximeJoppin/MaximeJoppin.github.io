@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maxime Joppin · Système solaire</title>
+<meta name="description" content="Portfolio de Maxime Joppin, développeur web : explorez un système solaire où chaque planète est un projet.">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#hud-nav">Aller à la navigation</a>
+
+<div id="scene" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- Page d'accueil -->
+<section id="intro" aria-labelledby="landing-title">
+  <div class="spotlight" aria-hidden="true"></div>
+  <div class="landing">
+    <div class="landing-top">
+      <span class="intro-code">SYS · MJ-01 · <span id="boot-state">initialisation</span></span>
+      <span class="intro-code">Arles, France · 43.68° N 4.63° E</span>
+    </div>
+
+    <h1 class="giant" id="landing-title" aria-label="Maxime Joppin">
+      <span class="giant-line fill" data-scramble>MAXIME</span>
+      <span class="giant-line stroke" data-scramble>JOPPIN</span>
+    </h1>
+
+    <div class="landing-grid">
+      <div class="landing-main">
+        <p class="statement">Développeur web.<br><em>Chaque planète est un projet.</em></p>
+        <p class="landing-text">Étudiant en BUT Informatique, je construis des boutiques PrestaShop, des modules et des plugins sur mesure, j’automatise avec n8n et j’évalue des modèles d’IA depuis 2023.</p>
+        <p class="landing-status"><span class="hint-dot" aria-hidden="true"></span>Recherche stage de 12 semaines · avril – juin 2027</p>
+        <div class="landing-cta">
+          <button class="enter-btn" id="enter-btn" disabled>
+            <span class="enter-ring" aria-hidden="true"></span>
+            <span>Explorer mon univers</span>
+            <kbd aria-hidden="true">Entrée</kbd>
+          </button>
+          <button class="btn ghost" data-enter="contact">Me contacter</button>
+        </div>
+        <dl class="stats">
+          <div><dt>Planètes</dt><dd id="planet-count">—</dd></div>
+          <div><dt>AI Trainer</dt><dd>2023<small>→</small></dd></div>
+          <div><dt>Anglais</dt><dd>C1</dd></div>
+          <div><dt>Badges Claude</dt><dd id="badge-count">—</dd></div>
+        </dl>
+      </div>
+
+      <aside class="landing-side" aria-label="Accès direct aux projets">
+        <div class="side-head"><span>Planètes détectées</span><b>accès direct</b></div>
+        <ol id="landing-list"></ol>
+        <div class="side-head" style="margin-top:18px"><span>Certifications</span><b>Claude Academy</b></div>
+        <div id="landing-badges"></div>
+        <div class="side-links">
+          <a href="https://www.linkedin.com/in/maxime-joppin" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="mailto:maxime.joppin@gmail.com">maxime.joppin@gmail.com</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+</section>
+
+<!-- Marque -->
+<header class="brand">
+  <button class="brand-btn" data-open="profile" aria-label="Ouvrir le profil de Maxime Joppin">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-text"><b>Maxime Joppin</b><small>Développeur web · stage 2027</small></span>
+  </button>
+</header>
+
+<!-- Menu discret -->
+<nav class="menu" aria-label="Menu principal">
+  <button id="home-btn">Accueil</button>
+  <button data-open="profile">À propos</button>
+  <button data-open="skills">Compétences</button>
+  <button data-open="contact">Contact</button>
+  <button id="sound-btn" class="icon-btn" aria-pressed="false" aria-label="Activer le son" title="Son">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="mute" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  </button>
+</nav>
+
+<!-- HUD : liste des corps célestes -->
+<section class="hud" id="hud-nav" aria-label="Navigation dans le système">
+  <div class="hud-head">
+    <span class="hud-title">Cartographie</span>
+    <span class="hud-coords" id="hud-coords" aria-hidden="true">—</span>
+  </div>
+  <ol class="hud-list" id="hud-list"></ol>
+  <div class="hud-tools">
+    <button id="zoom-in" aria-label="Zoomer" title="Zoomer (+)">+</button>
+    <button id="zoom-out" aria-label="Dézoomer" title="Dézoomer (−)">−</button>
+    <button id="reset-cam" class="wide" title="Vue globale (R)">Vue globale</button>
+  </div>
+</section>
+
+<!-- Indicateur d'exploration -->
+<div class="hint" id="hint" role="note">
+  <span class="hint-dot" aria-hidden="true"></span>
+  <span class="hint-text" id="hint-text">Cliquez sur une planète pour ouvrir un projet · glisser pour pivoter · molette pour zoomer</span>
+  <button class="hint-close" id="hint-close" aria-label="Masquer l’aide">×</button>
+</div>
+
+<!-- Étiquettes -->
+<div id="labels" aria-hidden="true"></div>
+<div id="hover-label" class="hover-label" aria-hidden="true"><b></b><small></small></div>
+
+<!-- Panneau d'information -->
+<aside id="panel" class="panel" role="dialog" aria-modal="false" aria-labelledby="panel-title" hidden>
+  <div class="panel-frame">
+    <div class="panel-top">
+      <span class="panel-kicker" id="panel-kicker"></span>
+      <div class="panel-actions">
+        <button class="nav-arrow" id="prev-body" aria-label="Projet précédent">‹</button>
+        <button class="nav-arrow" id="next-body" aria-label="Projet suivant">›</button>
+        <button class="panel-close" id="panel-close">← Système</button>
+      </div>
+    </div>
+    <div class="panel-body" id="panel-body" tabindex="-1"></div>
+  </div>
+</aside>
+
+<div class="sr-only" aria-live="polite" id="live"></div>
+
+<noscript><div class="noscript">Ce portfolio nécessite JavaScript et WebGL. Contact : maxime.joppin@gmail.com</div></noscript>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
