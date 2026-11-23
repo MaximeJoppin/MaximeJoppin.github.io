@@ -268,8 +268,8 @@ function renderProject(p, i) {
 
   const gallery = p.gallery.length ? `
         <section class="cs-block"><h2>Captures et documents</h2>
-          <div class="gallery">${p.gallery.map(([src, cap]) => `
-            <figure><button type="button" class="zoom" data-src="${b}${src}" data-caption="${esc(cap)}"><img src="${b}${src}" alt="${esc(cap)}" loading="lazy"></button><figcaption>${esc(cap)}</figcaption></figure>`).join('')}
+          <div class="gallery">${p.gallery.map(([src, cap, fit]) => `
+            <figure><button type="button" class="zoom${fit === 'contain' ? ' contain' : ''}" data-src="${b}${src}" data-caption="${esc(cap)}"><img src="${b}${src}" alt="${esc(cap)}" loading="lazy"></button><figcaption>${esc(cap)}</figcaption></figure>`).join('')}
           </div>
         </section>` : '';
 

@@ -179,6 +179,7 @@ export const projects = [
       ['assets/img/destiny/menu.jpg', 'Menu des emplacements, construit à partir d’une table de l’API'],
       ['assets/img/destiny/armes.jpg', 'Armes cinétiques : 459 résultats, 300 affichés pour rester fluide'],
       ['assets/img/destiny/casques-filtre.jpg', 'Casques avec recherche par nom et filtre par classe'],
+      ['assets/img/destiny/fiche-arme.jpg', 'Fiche d’une arme exotique : statistiques nommées par une requête par statistique', 'contain'],
       ['assets/img/destiny/diagramme_classe_codex.png', 'Diagramme de classes'],
     ],
     code: [['destiny-codex.js', 'javascript', 'src/Codex.js', 'La classe principale enchaîne les requêtes dépendantes.'], ['destiny-api.js', 'javascript', 'src/ApiBungie.js', 'Toutes les requêtes vers l’API passent par une seule classe.']],
