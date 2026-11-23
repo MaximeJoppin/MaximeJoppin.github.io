@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chatbot IA WordPress – Maxime Joppin</title>
+  <meta name="description" content="Plugin WordPress qui ajoute un assistant IA connecté à OpenAI et qui connaît le contenu du site.">
+  <meta name="theme-color" content="#0a0a09">
+  <meta property="og:title" content="Chatbot IA WordPress – Maxime Joppin">
+  <meta property="og:description" content="Plugin WordPress qui ajoute un assistant IA connecté à OpenAI et qui connaît le contenu du site.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/img/mm/hero.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a09'/%3E%3Crect x='8' y='8' width='16' height='16' rx='3' fill='%23d1a00b'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/tomorrow-night.min.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="bg" aria-hidden="true"><div class="grid"></div><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="spot"></i></div>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="../index.html#top">Maxime Joppin</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="../index.html#projets">Projets</a></li>
+          <li><a href="../index.html#competences">Compétences</a></li>
+          <li><a href="../index.html#parcours">Parcours</a></li>
+          <li><a href="../assets/CV_Maxime_Joppin.pdf" target="_blank" rel="noopener">CV</a></li>
+          <li><a class="cta" href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" class="case">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Fil d’Ariane"><a href="../index.html#projets">← Tous les projets</a></nav>
+      <header class="cs-head" id="top">
+        <p class="kicker">Plugin WordPress · IA</p>
+        <h1>Chatbot IA WordPress</h1>
+        <p class="cs-tagline">Plugin WordPress qui ajoute un assistant IA connecté à OpenAI et qui connaît le contenu du site.</p>
+        
+      </header>
+      <figure class="cs-cover code-cover" aria-hidden="true"><div class="win"><i></i><i></i><i></i><span>chatbot_plugin.php (extrait)</span></div><pre>// Le bot connaît le site : on lui donne les pages WordPress dans le prompt système
+$pages = get_posts(array(
+    'post_type' =&gt; 'page',
+    'numberposts' =&gt; 5
+));
+
+$site_content = "";
+foreach ($pages as $p) {
+    $site_content .= $p-&gt;post_title . " - " . wp_trim_words($p-&gt;post_content, 20) . " - " . get_permalink($p) . "\n";
+}
+
+// Mémoire de conversation : l'historique envoyé par le widget est revalidé
+$history = isset($_POST['history']) ? json_decode(stripslashes($_POST['history']), true) : [];
+
+$messages = array(
+    array("role" =&gt; "system", "content" =&gt; $system_prompt)
+);
+</pre></figure>
+      <div class="cs-grid">
+        <aside class="cs-side">
+          <dl class="meta"><div><dt>Rôle</dt><dd>Conception et développement</dd></div><div><dt>Cible</dt><dd>WordPress</dd></div><div><dt>Statut</dt><dd>Prototype fonctionnel</dd></div></dl>
+          <h3>Technologies</h3>
+          <ul class="stack"><li>PHP</li><li>WordPress</li><li>JavaScript</li><li>AJAX</li><li>API OpenAI</li></ul>
+          <h3>Compétences BUT</h3>
+          <ul class="but"><li><b>C1</b> Réaliser un développement d’application</li><li><b>C3</b> Administrer des systèmes communicants</li></ul>
+        </aside>
+        <div class="cs-main">
+          <section class="cs-block lead"><h2>En bref</h2><p>Un widget de chat ajouté en pied de page. Le rôle du bot, le contexte et le lien de contact se règlent dans l’administration ; le bot reçoit les pages du site pour proposer des liens pertinents sous forme de boutons.</p></section>
+        <section class="cs-block"><h2>Fonctionnement</h2><ul>
+        <li>Échanges en AJAX (<code>admin-ajax.php</code>) entre le widget et PHP.</li>
+        <li>Prompt système construit à partir des réglages et des pages WordPress, avec mémoire de la conversation.</li>
+        <li>Format de réponse <code>[BUTTON:texte|URL]</code> converti en boutons cliquables côté client.</li>
+      </ul></section>
+        <section class="cs-block"><h2>Extraits de code</h2>
+          <figure class="code">
+            <figcaption><span class="path">chatbot_plugin.php (extrait)</span><span class="note">Construction des messages envoyés au modèle.</span></figcaption>
+            <pre><code class="language-php">// Le bot connaît le site : on lui donne les pages WordPress dans le prompt système
+$pages = get_posts(array(
+    'post_type' =&gt; 'page',
+    'numberposts' =&gt; 5
+));
+
+$site_content = "";
+foreach ($pages as $p) {
+    $site_content .= $p-&gt;post_title . " - " . wp_trim_words($p-&gt;post_content, 20) . " - " . get_permalink($p) . "\n";
+}
+
+// Mémoire de conversation : l'historique envoyé par le widget est revalidé
+$history = isset($_POST['history']) ? json_decode(stripslashes($_POST['history']), true) : [];
+
+$messages = array(
+    array("role" =&gt; "system", "content" =&gt; $system_prompt)
+);
+
+if (!empty($history)) {
+    foreach ($history as $h) {
+        if (isset($h['role']) &amp;&amp; isset($h['content'])) {
+            $messages[] = $h;
+        }
+    }
+}
+
+$messages[] = array("role" =&gt; "user", "content" =&gt; $msg);</code></pre>
+          </figure>
+        </section>
+        </div>
+      </div>
+      <nav class="cs-nav" aria-label="Autres projets">
+        <a href="destiny-codex.html"><small>← Projet précédent</small>Destiny 2 Codex</a>
+        <a href="monster-museum.html"><small>Projet suivant →</small>Monster Museum</a>
+      </nav>
+    </div>
+  </main>
+  <div class="lightbox" hidden><button type="button" class="lb-close" aria-label="Fermer">×</button><img alt=""><p></p></div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 Maxime Joppin · Site statique fait main, hébergé sur GitHub Pages</span>
+      <span><a href="https://www.linkedin.com/in/maxime-joppin" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp; <a href="https://github.com/MaximeJoppin" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp; <a href="#top">Retour en haut</a></span>
+    </div>
+  </footer>
+  <script src="../assets/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>window.hljs && hljs.highlightAll();</script>
+</body>
+</html>

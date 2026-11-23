@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CG:SHOP 2027 Visualizer – Maxime Joppin</title>
+  <meta name="description" content="Outil C++ en ligne de commande qui transforme des données JSON de compétition en SVG et en site web.">
+  <meta name="theme-color" content="#0a0a09">
+  <meta property="og:title" content="CG:SHOP 2027 Visualizer – Maxime Joppin">
+  <meta property="og:description" content="Outil C++ en ligne de commande qui transforme des données JSON de compétition en SVG et en site web.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/img/mm/hero.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a09'/%3E%3Crect x='8' y='8' width='16' height='16' rx='3' fill='%23d1a00b'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="bg" aria-hidden="true"><div class="grid"></div><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="spot"></i></div>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="../index.html#top">Maxime Joppin</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="../index.html#projets">Projets</a></li>
+          <li><a href="../index.html#competences">Compétences</a></li>
+          <li><a href="../index.html#parcours">Parcours</a></li>
+          <li><a href="../assets/CV_Maxime_Joppin.pdf" target="_blank" rel="noopener">CV</a></li>
+          <li><a class="cta" href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" class="case">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Fil d’Ariane"><a href="../index.html#projets">← Tous les projets</a></nav>
+      <header class="cs-head" id="top">
+        <p class="kicker">Projet universitaire · Équipe de 5</p>
+        <h1>CG:SHOP 2027 Visualizer</h1>
+        <p class="cs-tagline">Outil C++ en ligne de commande qui transforme des données JSON de compétition en SVG et en site web.</p>
+        <div class="cs-links"><a class="btn" href="../demos/cgshop/instance.html" target="_blank" rel="noopener">Page d’instance générée par l’outil</a><a class="btn" href="../demos/cgshop/solution.html" target="_blank" rel="noopener">Page de solution générée</a></div>
+      </header>
+      <figure class="cs-cover contain"><img src="../demos/cgshop/instance.svg" alt="CG:SHOP 2027 Visualizer"></figure>
+      <div class="cs-grid">
+        <aside class="cs-side">
+          <dl class="meta"><div><dt>Rôle</dt><dd>Développeur (parsing, calcul de couverture, tests)</dd></div><div><dt>Équipe</dt><dd>5 étudiants, méthode Scrum</dd></div><div><dt>Durée</dt><dd>121 h d’équipe sur 2 sprints</dd></div></dl>
+          <h3>Technologies</h3>
+          <ul class="stack"><li>C++17</li><li>Make</li><li>JSON (nlohmann)</li><li>SVG</li><li>HTML</li><li>Git / GitLab</li></ul>
+          <h3>Compétences BUT</h3>
+          <ul class="but"><li><b>C1</b> Réaliser un développement d’application</li><li><b>C2</b> Optimiser des applications</li><li><b>C5</b> Conduire un projet</li><li><b>C6</b> Collaborer au sein d’une équipe</li></ul>
+        </aside>
+        <div class="cs-main">
+          <section class="cs-block lead"><h2>En bref</h2><p><a href="https://cgshop.ibr.cs.tu-bs.de/competition/cg-shop-2027/" target="_blank" rel="noopener">CG:SHOP</a> est une compétition internationale d’optimisation géométrique. L’édition 2027 porte sur la tonte d’une pelouse par plusieurs robots. Notre outil ne résout pas le problème : il lit les instances et les solutions et les rend explorables.</p></section>
+        <section class="cs-block"><h2>Mes contributions</h2><ul>
+        <li>Lecture des fichiers d’instances avec parcours de dossiers, puis lecture des solutions et calcul du score.</li>
+        <li>Calcul des cellules non tondues d’une solution, puis <strong>optimisation</strong> pour les grands robots : le robot est découpé en segments, ce qui rend le calcul bien plus rapide.</li>
+        <li>Détection des solutions invalides (<code>--check</code>) avec les raisons affichées.</li>
+        <li>Un mini-framework de tests unitaires C++ et la cible <code>make tests</code>.</li>
+      </ul></section>
+        <section class="cs-block"><h2>Travail en équipe</h2><p>Sprints, backlog, matrice RACI, analyse des risques et feuille de temps générée par script. Branches par user story et merge requests sur le GitLab de l’université.</p></section>
+        <section class="cs-block"><h2>Captures et documents</h2>
+          <div class="gallery">
+            <figure><button type="button" class="zoom" data-src="../assets/img/cgshop/RACI.jpg" data-caption="Matrice RACI du projet"><img src="../assets/img/cgshop/RACI.jpg" alt="Matrice RACI du projet" loading="lazy"></button><figcaption>Matrice RACI du projet</figcaption></figure>
+            <figure><button type="button" class="zoom" data-src="../assets/img/cgshop/risques.jpg" data-caption="Analyse des risques"><img src="../assets/img/cgshop/risques.jpg" alt="Analyse des risques" loading="lazy"></button><figcaption>Analyse des risques</figcaption></figure>
+          </div>
+        </section>
+        </div>
+      </div>
+      <nav class="cs-nav" aria-label="Autres projets">
+        <a href="custom-css-js.html"><small>← Projet précédent</small>Custom CSS &amp; JS</a>
+        <a href="destiny-codex.html"><small>Projet suivant →</small>Destiny 2 Codex</a>
+      </nav>
+    </div>
+  </main>
+  <div class="lightbox" hidden><button type="button" class="lb-close" aria-label="Fermer">×</button><img alt=""><p></p></div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 Maxime Joppin · Site statique fait main, hébergé sur GitHub Pages</span>
+      <span><a href="https://www.linkedin.com/in/maxime-joppin" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp; <a href="https://github.com/MaximeJoppin" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp; <a href="#top">Retour en haut</a></span>
+    </div>
+  </footer>
+  <script src="../assets/main.js"></script>
+</body>
+</html>

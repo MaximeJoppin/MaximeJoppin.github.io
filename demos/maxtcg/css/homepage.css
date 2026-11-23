@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
+
+:root{--mtcg-bg:#080814;--mtcg-bg-section:#0e0e22;--mtcg-bg-card:#111128;--mtcg-yellow:#f5c518;--mtcg-yellow-glow:rgba(245,197,24,0.35);--mtcg-purple:#7c3aed;--mtcg-purple-glow:rgba(124,58,237,0.4);--mtcg-text:#ffffff;--mtcg-text-muted:#9ca3af;--mtcg-border:rgba(255,255,255,0.08);--mtcg-radius:12px;--mtcg-font-display:'Barlow Condensed','Arial Black',sans-serif;--mtcg-font-body:'Barlow',Arial,sans-serif;--mtcg-max-width:1200px}
+body{background-color:var(--mtcg-bg)!important;color:var(--mtcg-text)!important;font-family:var(--mtcg-font-body)!important}
+#wrapper,.page-wrapper,#content-wrapper{background:transparent!important}
+#carousel,.carousel{display:none!important}
+.mtcg-container{max-width:var(--mtcg-max-width);margin:0 auto;padding:0 24px}
+.mtcg-section-title{font-family:var(--mtcg-font-display);font-size:2.2rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--mtcg-text);margin:0 0 32px}
+.mtcg-section-title span{color:var(--mtcg-yellow)}
+.mtcg-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-family:var(--mtcg-font-display);font-size:1rem;font-weight:700;letter-spacing:.05em;text-decoration:none!important;text-transform:uppercase;transition:all .25s ease;cursor:pointer;white-space:nowrap;border:none}
+.mtcg-btn--primary{background:var(--mtcg-yellow);color:#000!important;box-shadow:0 4px 20px var(--mtcg-yellow-glow)}
+.mtcg-btn--primary:hover{background:#ffd340;transform:translateY(-2px);box-shadow:0 8px 30px var(--mtcg-yellow-glow)}
+.mtcg-btn--outline{background:transparent;color:#fff!important;border:2px solid rgba(255,255,255,.3)}
+.mtcg-btn--outline:hover{border-color:var(--mtcg-yellow);color:var(--mtcg-yellow)!important;transform:translateY(-2px)}
+
+/* HERO */
+#mtcg-hero{position:relative;background:var(--mtcg-bg);min-height:520px;display:flex;align-items:center;overflow:hidden;padding:72px 0}
+#mtcg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 90% at 72% 50%,rgba(124,58,237,.28) 0%,transparent 70%),radial-gradient(ellipse 50% 70% at 18% 55%,rgba(59,7,100,.35) 0%,transparent 60%);pointer-events:none}
+.mtcg-hero__inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.mtcg-hero__title{font-family:var(--mtcg-font-display)!important;font-size:clamp(2.4rem,4vw,3.6rem)!important;font-weight:900!important;line-height:1.05!important;text-transform:uppercase!important;color:var(--mtcg-text)!important;margin-bottom:20px!important}
+.mtcg-hero__title em{font-style:normal;color:var(--mtcg-yellow)}
+.mtcg-hero__desc{font-size:1rem;color:var(--mtcg-text-muted);line-height:1.75;margin-bottom:36px}
+.mtcg-hero__ctas{display:flex;gap:16px;flex-wrap:wrap}
+.mtcg-hero__visual{display:flex;justify-content:center;align-items:center}
+.mtcg-hero__img{width:100%;max-width:500px;border-radius:16px;object-fit:cover;filter:drop-shadow(0 20px 60px rgba(124,58,237,.55))}
+
+/* CATÉGORIES */
+#mtcg-categories{padding:56px 0;background:var(--mtcg-bg)}
+.mtcg-categories__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.mtcg-cat-card{position:relative;border-radius:var(--mtcg-radius);overflow:hidden;aspect-ratio:3/4;display:block;text-decoration:none!important;border:1px solid var(--mtcg-border);transition:transform .3s ease,box-shadow .3s ease}
+.mtcg-cat-card:hover{transform:translateY(-6px)}
+.mtcg-cat-card--pokemon:hover{box-shadow:0 16px 48px rgba(250,204,21,.45)}
+.mtcg-cat-card--onepiece:hover{box-shadow:0 16px 48px rgba(239,68,68,.45)}
+.mtcg-cat-card--rift:hover{box-shadow:0 16px 48px rgba(34,197,94,.45)}
+.mtcg-cat-card--promo:hover{box-shadow:0 16px 48px rgba(249,115,22,.45)}
+.mtcg-cat-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:block}
+.mtcg-cat-card:hover img{transform:scale(1.07)}
+.mtcg-cat-card__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.1) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:20px 18px;gap:10px}
+.mtcg-cat-card__label{font-family:var(--mtcg-font-display);font-size:1.4rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.05em;line-height:1}
+.mtcg-cat-card__btn{display:inline-block;padding:6px 16px;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.3);border-radius:6px;font-family:var(--mtcg-font-display);font-size:.85rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.08em;transition:background .2s,color .2s,border-color .2s}
+.mtcg-cat-card:hover .mtcg-cat-card__btn{background:var(--mtcg-yellow);color:#000;border-color:var(--mtcg-yellow)}
+
+/* PRODUITS VEDETTES natif PS */
+.featured-products{background:var(--mtcg-bg-section)!important;padding:56px 0!important}
+.featured-products .h2,.featured-products h2{font-family:var(--mtcg-font-display)!important;font-size:2.2rem!important;font-weight:900!important;text-transform:uppercase!important;color:var(--mtcg-text)!important}
+.featured-products .product-miniature .card{background:var(--mtcg-bg-card)!important;border:1px solid var(--mtcg-border)!important;border-radius:var(--mtcg-radius)!important;transition:transform .3s,box-shadow .3s!important}
+.featured-products .product-miniature .card:hover{transform:translateY(-4px)!important;box-shadow:0 12px 40px var(--mtcg-purple-glow)!important}
+.featured-products .product-miniature .card-body{background:var(--mtcg-bg-card)!important}
+.featured-products .product-price{color:var(--mtcg-yellow)!important;font-family:var(--mtcg-font-display)!important;font-size:1.25rem!important;font-weight:700!important}
+.featured-products .add-to-cart{background:var(--mtcg-yellow)!important;color:#000!important;border:none!important;font-weight:700!important;border-radius:6px!important}
+.featured-products .add-to-cart:hover{background:#ffd340!important}
+.featured-products .product-miniature .thumbnail-container,.featured-products .product-miniature .card-img-top{background:#0d0d20!important}
+
+/* TRUST */
+#mtcg-trust{padding:44px 0;background:var(--mtcg-bg-card);border-top:1px solid var(--mtcg-border);border-bottom:1px solid var(--mtcg-border)}
+.mtcg-trust__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.mtcg-trust-item{display:flex;align-items:center;gap:16px}
+.mtcg-trust-item__icon{width:54px;height:54px;border-radius:50%;background:rgba(124,58,237,.15);border:2px solid rgba(124,58,237,.35);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.mtcg-trust-item__text strong{display:block;font-family:var(--mtcg-font-display);font-size:.95rem;font-weight:700;color:var(--mtcg-text);text-transform:uppercase;letter-spacing:.05em}
+.mtcg-trust-item__text span{font-size:.82rem;color:var(--mtcg-text-muted)}
+
+/* CTA */
+#mtcg-cta{padding:72px 0;background:var(--mtcg-bg)}
+.mtcg-cta__inner{display:grid;grid-template-columns:1fr 1.3fr;align-items:center;background:var(--mtcg-bg-card);border:1px solid var(--mtcg-border);border-radius:20px;overflow:hidden}
+.mtcg-cta__img{width:100%;height:340px;object-fit:cover;display:block}
+.mtcg-cta__content{padding:44px 44px 44px 48px}
+.mtcg-cta__title{font-family:var(--mtcg-font-display);font-size:2.3rem;font-weight:900;text-transform:uppercase;color:var(--mtcg-text);margin-bottom:16px;line-height:1.1}
+.mtcg-cta__title span{color:var(--mtcg-yellow)}
+.mtcg-cta__desc{font-size:.95rem;color:var(--mtcg-text-muted);line-height:1.75;margin-bottom:32px}
+
+/* AVIS */
+#mtcg-reviews{padding:72px 0 0;background:var(--mtcg-bg)}
+.mtcg-reviews__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px}
+.mtcg-review-card{background:var(--mtcg-bg-card);border:1px solid var(--mtcg-border);border-radius:var(--mtcg-radius);padding:28px;display:flex;flex-direction:column;gap:14px;transition:border-color .3s}
+.mtcg-review-card:hover{border-color:rgba(245,197,24,.3)}
+.mtcg-review-stars{color:var(--mtcg-yellow);font-size:1.1rem;letter-spacing:3px}
+.mtcg-review-text{font-size:.92rem;color:var(--mtcg-text-muted);line-height:1.75;font-style:italic;flex:1}
+.mtcg-review-author{display:flex;align-items:center;gap:12px}
+.mtcg-review-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mtcg-font-display);font-weight:800;font-size:1rem;color:#000;flex-shrink:0}
+.mtcg-review-name{font-weight:600;font-size:.9rem;color:var(--mtcg-text)}
+.mtcg-reviews__stats{background:var(--mtcg-bg-card);border-top:1px solid var(--mtcg-border);padding:28px 0}
+.mtcg-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+.mtcg-stat-item{display:flex;align-items:center;justify-content:center;gap:10px}
+.mtcg-stat-item__icon{font-size:1.4rem}
+.mtcg-stat-item__text{font-size:.9rem;color:var(--mtcg-text-muted)}
+.mtcg-stat-item__text strong{color:var(--mtcg-text);font-weight:600}
+
+/* RESPONSIVE */
+@media(max-width:991px){.mtcg-hero__inner{grid-template-columns:1fr}.mtcg-hero__visual{display:none}.mtcg-categories__grid{grid-template-columns:repeat(2,1fr)}.mtcg-trust__grid{grid-template-columns:repeat(2,1fr)}.mtcg-cta__inner{grid-template-columns:1fr}.mtcg-cta__img{height:240px}.mtcg-cta__content{padding:32px}.mtcg-reviews__grid{grid-template-columns:1fr 1fr}}
+@media(max-width:575px){.mtcg-hero__title{font-size:2rem!important}.mtcg-hero__ctas{flex-direction:column}.mtcg-categories__grid{gap:12px}.mtcg-reviews__grid{grid-template-columns:1fr}.mtcg-trust__grid{grid-template-columns:1fr}.mtcg-stats-grid{grid-template-columns:1fr;gap:20px}}
+
+
+/* =====================================================
+   PATCH v2 — corrections structure TinyMCE
+   À ajouter à la FIN de ton CSS existant
+   ===================================================== */
+
+/* Boutons : forcer display même si PS écrase */
+.mtcg-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Catégories : overlay est maintenant un <a>, pas un <div> */
+.mtcg-cat-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.mtcg-cat-card__overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  align-items: flex-start !important;
+  padding: 20px 18px !important;
+  gap: 10px !important;
+  background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.1) 55%, transparent 100%) !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  /* Pas de z-index négatif : l'overlay couvre l'image et capte les clics */
+}
+
+/* S'assurer que l'image ne sort pas de la carte */
+.mtcg-cat-card > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+}
+
+
+/* =====================================================
+   PATCH v3 — correctifs vus sur les captures du 8 juin
+   ===================================================== */
+
+/* Texte d intro du hero : le theme le rendait presque invisible */
+#mtcg-hero .mtcg-hero__desc{color:#9ca3af!important}
+
+/* Texte du hero aligne a gauche (le theme le centrait) */
+#mtcg-hero .mtcg-hero__text{text-align:left!important}
+
+/* Les deux boutons du hero tiennent sur une ligne quand il y a la place */
+#mtcg-hero .mtcg-hero__ctas .mtcg-btn{padding:14px 22px!important}

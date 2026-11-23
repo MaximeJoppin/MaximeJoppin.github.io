@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MaxTCG — Cartes à collectionner Pokémon, One Piece, Rift Bounds</title>
+<link rel="icon" href="images/favicon.ico"><link rel="stylesheet" href="css/homepage.css"><link rel="stylesheet" href="css/style.css"></head><body>
+<div class="demo">Version démo : catalogue et paiement fictifs · <a href="../../#projets" style="color:#fff;text-decoration:underline">← Retour au portfolio</a></div>
+<div class="top"><div class="mtcg-container"><a href="#/c/all" style="margin:0">Contactez-nous</a><div><button id="login">👤 Connexion</button><a href="#/favoris">♥ Favoris (<span id="fcnt">0</span>)</a><a href="#/panier">🛒 Panier (<span id="cnt">0</span>)</a></div></div></div>
+<header class="hd"><div class="mtcg-container"><a href="#/"><img src="images/logo-maxtcg.png" alt="MaxTCG"></a><button id="burger">☰</button>
+<nav class="menu" id="nav"><a href="#/c/pokemon">Pokémon</a><a href="#/c/onepiece">One Piece</a><a href="#/c/riftbounds">Rift Bounds</a><a href="#/c/new">Nouveautés</a><a href="#/c/promo">Promotions</a></nav>
+<form id="sf"><input id="sq" type="search" placeholder="Rechercher"></form></div></header>
+<main id="app"></main>
+<footer><div class="mtcg-container">© MaxTCG — démo statique · Paiement sécurisé · Expédition sous 24 h ouvrées</div></footer>
+<div id="modal"></div><div id="toast"></div>
+<template id="home">
+<div id="mtcg-hero">
+  <div class="mtcg-container">
+    <div class="mtcg-hero__inner">
+      <div class="mtcg-hero__text">
+        <h1 class="mtcg-hero__title">CARTES &#192;<br>COLLECTIONNER<br><em>POK&#201;MON, ONE PIECE</em><br>ET RIFT BOUNDS</h1>
+        <p class="mtcg-hero__desc">D&#233;couvrez notre s&#233;lection de boosters, displays et cartes rares.<br>Stock limit&#233;, nouveaut&#233;s r&#233;guli&#232;res et exp&#233;dition rapide.</p>
+        <div class="mtcg-hero__ctas">
+          <a href="#/c/new" class="mtcg-btn mtcg-btn--primary">VOIR LES NOUVEAUT&#201;S</a>
+          <a href="#/c/all" class="mtcg-btn mtcg-btn--outline">D&#201;COUVRIR LES BOOSTERS</a>
+        </div>
+      </div>
+      <div class="mtcg-hero__visual">
+        <img src="images/hero-cards.png" alt="Cartes &#224; collectionner" class="mtcg-hero__img">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="mtcg-categories">
+  <div class="mtcg-container">
+    <div class="mtcg-categories__grid">
+
+      <div class="mtcg-cat-card mtcg-cat-card--pokemon">
+        <img src="images/cat-pokemon.png" alt="Pok&#233;mon">
+        <a href="#/c/pokemon" class="mtcg-cat-card__overlay">
+          <span class="mtcg-cat-card__label">POK&#201;MON</span>
+          <span class="mtcg-cat-card__btn">VOIR</span>
+        </a>
+      </div>
+
+      <div class="mtcg-cat-card mtcg-cat-card--onepiece">
+        <img src="images/cat-onepiece.png" alt="One Piece">
+        <a href="#/c/onepiece" class="mtcg-cat-card__overlay">
+          <span class="mtcg-cat-card__label">ONE PIECE</span>
+          <span class="mtcg-cat-card__btn">VOIR</span>
+        </a>
+      </div>
+
+      <div class="mtcg-cat-card mtcg-cat-card--rift">
+        <img src="images/cat-riftbounds.png" alt="Rift Bounds">
+        <a href="#/c/riftbounds" class="mtcg-cat-card__overlay">
+          <span class="mtcg-cat-card__label">RIFT BOUNDS</span>
+          <span class="mtcg-cat-card__btn">VOIR</span>
+        </a>
+      </div>
+
+      <div class="mtcg-cat-card mtcg-cat-card--promo">
+        <img src="images/cat-promos.png" alt="Promotions">
+        <a href="#/c/promo" class="mtcg-cat-card__overlay">
+          <span class="mtcg-cat-card__label">PROMOTIONS</span>
+          <span class="mtcg-cat-card__btn">VOIR</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="mtcg-feat"><div class="mtcg-container"><h2 class="mtcg-section-title">LES <span>INDISPENSABLES</span> DU MOMENT</h2><div id="feat"></div></div></div>
+
+<div id="mtcg-trust">
+  <div class="mtcg-container">
+    <div class="mtcg-trust__grid">
+      <div class="mtcg-trust-item">
+        <div class="mtcg-trust-item__icon">&#10003;</div>
+        <div class="mtcg-trust-item__text"><strong>Stock v&#233;rifi&#233;</strong><span>Produits en stock et v&#233;rifi&#233;s</span></div>
+      </div>
+      <div class="mtcg-trust-item">
+        <div class="mtcg-trust-item__icon">&#9993;</div>
+        <div class="mtcg-trust-item__text"><strong>Envoi rapide</strong><span>Exp&#233;dition sous 24h ouvrées</span></div>
+      </div>
+      <div class="mtcg-trust-item">
+        <div class="mtcg-trust-item__icon">&#9733;</div>
+        <div class="mtcg-trust-item__text"><strong>Produits officiels</strong><span>100% officiels et authentiques</span></div>
+      </div>
+      <div class="mtcg-trust-item">
+        <div class="mtcg-trust-item__icon">&#128274;</div>
+        <div class="mtcg-trust-item__text"><strong>Paiement s&#233;curis&#233;</strong><span>Paiement 100% s&#233;curis&#233; et prot&#233;g&#233;</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="mtcg-cta">
+  <div class="mtcg-container">
+    <div class="mtcg-cta__inner">
+      <img src="images/cta-collection.png" alt="Compl&#233;tez votre collection" class="mtcg-cta__img">
+      <div class="mtcg-cta__content">
+        <h2 class="mtcg-cta__title">COMPL&#201;TEZ<br><span>VOTRE COLLECTION</span></h2>
+        <p class="mtcg-cta__desc">Que vous soyez joueur, collectionneur ou d&#233;butant, trouvez les cartes et accessoires qu'il vous faut pour prot&#233;ger, &#233;changer et enrichir votre collection.</p>
+        <a href="#/c/all" class="mtcg-btn mtcg-btn--primary">EXPLORER LA BOUTIQUE</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="mtcg-reviews">
+  <div class="mtcg-container">
+    <h2 class="mtcg-section-title">ILS NOUS FONT <span>CONFIANCE</span></h2>
+    <div class="mtcg-reviews__grid">
+      <div class="mtcg-review-card">
+        <div class="mtcg-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="mtcg-review-text">"Commande rapide, cartes bien prot&#233;g&#233;es, je recommande sans h&#233;siter !"</p>
+        <div class="mtcg-review-author">
+          <div class="mtcg-review-avatar" style="background:#f5c518;">LB</div>
+          <span class="mtcg-review-name">Lucas B.</span>
+        </div>
+      </div>
+      <div class="mtcg-review-card">
+        <div class="mtcg-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="mtcg-review-text">"Produits officiels et service client au top ! Je recommanderai sans h&#233;siter."</p>
+        <div class="mtcg-review-author">
+          <div class="mtcg-review-avatar" style="background:#a855f7;">ED</div>
+          <span class="mtcg-review-name">Emma D.</span>
+        </div>
+      </div>
+      <div class="mtcg-review-card">
+        <div class="mtcg-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="mtcg-review-text">"Super boutique pour les collectionneurs, je suis ravi de mes achats."</p>
+        <div class="mtcg-review-author">
+          <div class="mtcg-review-avatar" style="background:#22c55e;">TM</div>
+          <span class="mtcg-review-name">Th&#233;o M.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mtcg-reviews__stats">
+    <div class="mtcg-container">
+      <div class="mtcg-stats-grid">
+        <div class="mtcg-stat-item">
+          <span class="mtcg-stat-item__icon">&#128101;</span>
+          <span class="mtcg-stat-item__text"><strong>+1000</strong> clients satisfaits</span>
+        </div>
+        <div class="mtcg-stat-item">
+          <span class="mtcg-stat-item__icon">&#9733;</span>
+          <span class="mtcg-stat-item__text">Note moyenne <strong>4,9/5</strong></span>
+        </div>
+        <div class="mtcg-stat-item">
+          <span class="mtcg-stat-item__icon">&#128172;</span>
+          <span class="mtcg-stat-item__text"><strong>Service client</strong> r&#233;actif</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</template>
+<script src="js/app.js"></script></body></html>

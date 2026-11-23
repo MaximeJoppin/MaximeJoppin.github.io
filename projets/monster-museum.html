@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monster Museum – Maxime Joppin</title>
+  <meta name="description" content="Jeu multijoueur Roblox : 55 000 lignes de Luau typé, architecture serveur autoritaire et tests automatisés.">
+  <meta name="theme-color" content="#0a0a09">
+  <meta property="og:title" content="Monster Museum – Maxime Joppin">
+  <meta property="og:description" content="Jeu multijoueur Roblox : 55 000 lignes de Luau typé, architecture serveur autoritaire et tests automatisés.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/img/mm/hero.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a09'/%3E%3Crect x='8' y='8' width='16' height='16' rx='3' fill='%23d1a00b'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/tomorrow-night.min.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="bg" aria-hidden="true"><div class="grid"></div><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="spot"></i></div>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="../index.html#top">Maxime Joppin</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="../index.html#projets">Projets</a></li>
+          <li><a href="../index.html#competences">Compétences</a></li>
+          <li><a href="../index.html#parcours">Parcours</a></li>
+          <li><a href="../assets/CV_Maxime_Joppin.pdf" target="_blank" rel="noopener">CV</a></li>
+          <li><a class="cta" href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" class="case">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Fil d’Ariane"><a href="../index.html#projets">← Tous les projets</a></nav>
+      <header class="cs-head" id="top">
+        <p class="kicker">Jeu vidéo · Projet personnel</p>
+        <h1>Monster Museum</h1>
+        <p class="cs-tagline">Jeu multijoueur Roblox : 55 000 lignes de Luau typé, architecture serveur autoritaire et tests automatisés.</p>
+        
+      </header>
+      <figure class="cs-cover"><img src="../assets/img/mm/hero.jpg" alt="Monster Museum"></figure>
+      <div class="cs-grid">
+        <aside class="cs-side">
+          <dl class="meta"><div><dt>Rôle</dt><dd>Seul développeur (code, game design, 3D, audio)</dd></div><div><dt>Durée</dt><dd>Depuis novembre 2026</dd></div><div><dt>Équipe</dt><dd>Solo</dd></div><div><dt>Statut</dt><dd>En développement, publié en privé sur Roblox</dd></div></dl>
+          <h3>Technologies</h3>
+          <ul class="stack"><li>Luau (strict)</li><li>Roblox Studio</li><li>Rojo</li><li>Lune (tests)</li><li>Blender + Python</li><li>Git</li><li>Claude Code</li></ul>
+          <h3>Compétences BUT</h3>
+          <ul class="but"><li><b>C1</b> Réaliser un développement d’application</li><li><b>C2</b> Optimiser des applications</li><li><b>C4</b> Gérer des données</li><li><b>C5</b> Conduire un projet</li></ul>
+        </aside>
+        <div class="cs-main">
+          <section class="cs-block lead"><h2>En bref</h2><p>Un jeu Roblox multijoueur où l’on explore des zones, met des monstres KO, les ramène dans son musée et les expose pour gagner de l’argent. Les autres joueurs peuvent voler un monstre pendant son transport : c’est le cœur de l’interaction.</p><dl class="stats big"><div><dt>216</dt><dd>fichiers Luau</dd></div><div><dt>55 k</dt><dd>lignes de code</dd></div><div><dt>95</dt><dd>commits</dd></div><div><dt>34</dt><dd>services serveur</dd></div></dl></section>
+        <section class="cs-block"><h2>Le défi</h2><p>Un jeu multijoueur se fait tricher dès que le client décide de quelque chose. Il fallait aussi que les règles du jeu (combat, économie, progression) puissent être testées et équilibrées <em>sans</em> lancer Roblox Studio à chaque fois.</p></section>
+        <section class="cs-block"><h2>Ce que j’ai construit</h2><ul>
+        <li><strong>Serveur autoritaire</strong> : génération, captures, transport, vol, revenus et sauvegarde sont décidés par le serveur. Chaque RemoteEvent est validé et limité par un seau à jetons par joueur.</li>
+        <li><strong>Domaine pur testable</strong> : 22 modules de règles sans API Roblox (machine à états des monstres, économie, musée…), testés hors Studio avec Lune.</li>
+        <li><strong>Simulations d’équilibrage</strong> : scripts qui jouent des carrières complètes, des combats et des vols par agents pour calibrer les valeurs de <code>Config/</code>.</li>
+        <li><strong>Pipeline de contenu</strong> : modèles low poly générés en Python dans Blender puis importés par des outils d’édition ; 11 espèces modélisées et animées, 5 zones.</li>
+        <li><strong>Qualité</strong> : typage strict, vérification de types en CI locale, linter (selene), formatage (stylua), localisation complète (aucun texte en dur).</li>
+      </ul></section>
+        <section class="cs-block"><h2>Méthode</h2><p>Documentation de conception versionnée (règles ✅ validées / 🟡 proposées / ❓ ouvertes), audits réguliers, et un flux de travail assisté par IA avec Claude Code : skills et serveurs MCP sur mesure (Roblox Studio, Blender), toujours relu et vérifié par les tests.</p></section>
+        <section class="cs-block"><h2>En vidéo</h2>
+          <figure class="video"><video src="../assets/video/mm-trailer.mp4" poster="../assets/video/mm-trailer-poster.jpg" controls muted playsinline preload="none"></video><figcaption>Bande-annonce verticale générée par mon pipeline marketing (montage, voix, sous-titres).</figcaption></figure>
+        </section>
+        <section class="cs-block"><h2>Captures et documents</h2>
+          <div class="gallery">
+            <figure><button type="button" class="zoom" data-src="../assets/img/mm/lobby.jpg" data-caption="Le lobby : zone sécurisée circulaire autour des six musées"><img src="../assets/img/mm/lobby.jpg" alt="Le lobby : zone sécurisée circulaire autour des six musées" loading="lazy"></button><figcaption>Le lobby : zone sécurisée circulaire autour des six musées</figcaption></figure>
+            <figure><button type="button" class="zoom" data-src="../assets/img/mm/jungle.jpg" data-caption="Zone 3, la jungle : décor low poly généré dans Blender"><img src="../assets/img/mm/jungle.jpg" alt="Zone 3, la jungle : décor low poly généré dans Blender" loading="lazy"></button><figcaption>Zone 3, la jungle : décor low poly généré dans Blender</figcaption></figure>
+            <figure><button type="button" class="zoom" data-src="../assets/img/mm/thornfang.jpg" data-caption="Thornfang, une des espèces de la zone 1"><img src="../assets/img/mm/thornfang.jpg" alt="Thornfang, une des espèces de la zone 1" loading="lazy"></button><figcaption>Thornfang, une des espèces de la zone 1</figcaption></figure>
+            <figure><button type="button" class="zoom" data-src="../assets/img/mm/primordrax.jpg" data-caption="Primordrax : capture d’une attaque animée"><img src="../assets/img/mm/primordrax.jpg" alt="Primordrax : capture d’une attaque animée" loading="lazy"></button><figcaption>Primordrax : capture d’une attaque animée</figcaption></figure>
+            <figure><button type="button" class="zoom" data-src="../assets/img/mm/zone4-echelle.jpg" data-caption="Planche d’échelle des espèces de la zone 4"><img src="../assets/img/mm/zone4-echelle.jpg" alt="Planche d’échelle des espèces de la zone 4" loading="lazy"></button><figcaption>Planche d’échelle des espèces de la zone 4</figcaption></figure>
+            <figure><button type="button" class="zoom" data-src="../assets/img/mm/ui-boutique.jpg" data-caption="Interface de la boutique"><img src="../assets/img/mm/ui-boutique.jpg" alt="Interface de la boutique" loading="lazy"></button><figcaption>Interface de la boutique</figcaption></figure>
+            <figure><button type="button" class="zoom" data-src="../assets/img/mm/vitrine.jpg" data-caption="Vitrine centrale du musée"><img src="../assets/img/mm/vitrine.jpg" alt="Vitrine centrale du musée" loading="lazy"></button><figcaption>Vitrine centrale du musée</figcaption></figure>
+            <figure><button type="button" class="zoom" data-src="../assets/img/mm/foret.jpg" data-caption="Zone 2, la forêt"><img src="../assets/img/mm/foret.jpg" alt="Zone 2, la forêt" loading="lazy"></button><figcaption>Zone 2, la forêt</figcaption></figure>
+          </div>
+        </section>
+        <section class="cs-block"><h2>Extraits de code</h2>
+          <figure class="code">
+            <figcaption><span class="path">src/shared/Domain/MonsterStateMachine.luau</span><span class="note">Les transitions d’état d’un monstre sont une simple table de données : impossible de passer de « Sauvage » à « Capturé » sans passer par le KO.</span></figcaption>
+            <pre><code class="language-lua">--!strict
+-- États d'un monstre du monde et transitions autorisées (ARCHITECTURE §2).
+-- Table de données pure : MonsterWorld est le seul à appliquer les transitions.
+
+export type State = "Wild" | "InCombat" | "Stunned" | "Asleep" | "Carried" | "Returning" | "Secured" | "Despawned"
+
+local ALLOWED: { [State]: { [State]: boolean } } = {
+	Wild = { InCombat = true, Despawned = true },
+	-- InCombat/Stunned → Returning : la cible est perdue (trop loin, morte, partie, dans le lobby) ; le monstre
+	-- regagne son point d'apparition. → Wild : abandon au minuteur (D5, sans suivi de cible). → Asleep : KO.
+	InCombat = { Stunned = true, Asleep = true, Wild = true, Returning = true, Despawned = true },
+	Stunned = { InCombat = true, Asleep = true, Wild = true, Returning = true, Despawned = true },
+	-- Asleep → Returning : minuteur de sommeil écoulé au sol.
+	Asleep = { Carried = true, Returning = true, Despawned = true },
+	-- Carried → Asleep : lâcher, batte, mort, déconnexion. → Returning : réveil. → Secured : lobby.
+	Carried = { Asleep = true, Returning = true, Secured = true, Despawned = true },
+	Returning = { Wild = true, Despawned = true },
+	Secured = {},
+	Despawned = {},
+}</code></pre>
+          </figure>
+          <figure class="code">
+            <figcaption><span class="path">src/server/Services/Net.luau</span><span class="note">Anti-spam côté serveur : un seau à jetons par joueur et par remote.</span></figcaption>
+            <pre><code class="language-lua">local suspicion: { [Player]: number } = {}
+
+local function allow(player: Player, name: string): boolean
+	local rate = RATES[name] or DEFAULT_RATE
+	local perPlayer = buckets[player]
+	if not perPlayer then
+		perPlayer = {}
+		buckets[player] = perPlayer
+	end
+	local now = os.clock()
+	local b = perPlayer[name]
+	if not b then
+		b = { tokens = rate.capacity, at = now }
+		perPlayer[name] = b
+	end
+	b.tokens = math.min(rate.capacity, b.tokens + (now - b.at) * rate.refillPerSecond)
+	b.at = now
+	if b.tokens &lt; 1 then
+		return false
+	end
+	b.tokens -= 1
+	return true
+end</code></pre>
+          </figure>
+        </section>
+        </div>
+      </div>
+      <nav class="cs-nav" aria-label="Autres projets">
+        <a href="chatbot-wordpress.html"><small>← Projet précédent</small>Chatbot IA WordPress</a>
+        <a href="maxtcg.html"><small>Projet suivant →</small>MaxTCG</a>
+      </nav>
+    </div>
+  </main>
+  <div class="lightbox" hidden><button type="button" class="lb-close" aria-label="Fermer">×</button><img alt=""><p></p></div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 Maxime Joppin · Site statique fait main, hébergé sur GitHub Pages</span>
+      <span><a href="https://www.linkedin.com/in/maxime-joppin" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp; <a href="https://github.com/MaximeJoppin" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp; <a href="#top">Retour en haut</a></span>
+    </div>
+  </footer>
+  <script src="../assets/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>window.hljs && hljs.highlightAll();</script>
+</body>
+</html>

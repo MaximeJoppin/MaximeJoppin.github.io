@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Destiny 2 Codex – Maxime Joppin</title>
+  <meta name="description" content="Application web client riche qui explore l’équipement de Destiny 2 via l’API officielle de Bungie.">
+  <meta name="theme-color" content="#0a0a09">
+  <meta property="og:title" content="Destiny 2 Codex – Maxime Joppin">
+  <meta property="og:description" content="Application web client riche qui explore l’équipement de Destiny 2 via l’API officielle de Bungie.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/img/mm/hero.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a09'/%3E%3Crect x='8' y='8' width='16' height='16' rx='3' fill='%23d1a00b'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/tomorrow-night.min.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="bg" aria-hidden="true"><div class="grid"></div><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="spot"></i></div>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="../index.html#top">Maxime Joppin</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="../index.html#projets">Projets</a></li>
+          <li><a href="../index.html#competences">Compétences</a></li>
+          <li><a href="../index.html#parcours">Parcours</a></li>
+          <li><a href="../assets/CV_Maxime_Joppin.pdf" target="_blank" rel="noopener">CV</a></li>
+          <li><a class="cta" href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" class="case">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Fil d’Ariane"><a href="../index.html#projets">← Tous les projets</a></nav>
+      <header class="cs-head" id="top">
+        <p class="kicker">Projet universitaire · R3.01</p>
+        <h1>Destiny 2 Codex</h1>
+        <p class="cs-tagline">Application web client riche qui explore l’équipement de Destiny 2 via l’API officielle de Bungie.</p>
+        
+      </header>
+      <figure class="cs-cover contain"><img src="../assets/img/destiny/diagramme_classe_codex.png" alt="Destiny 2 Codex"></figure>
+      <div class="cs-grid">
+        <aside class="cs-side">
+          <dl class="meta"><div><dt>Rôle</dt><dd>Développement complet</dd></div><div><dt>Module</dt><dd>R3.01 Développement web</dd></div><div><dt>Statut</dt><dd>Terminé</dd></div></dl>
+          <h3>Technologies</h3>
+          <ul class="stack"><li>JavaScript ES6</li><li>POO</li><li>Webpack 5</li><li>API REST</li><li>HTML / CSS</li></ul>
+          <h3>Compétences BUT</h3>
+          <ul class="but"><li><b>C1</b> Réaliser un développement d’application</li><li><b>C4</b> Gérer des données</li></ul>
+        </aside>
+        <div class="cs-main">
+          <section class="cs-block lead"><h2>En bref</h2><p>Trois écrans : les emplacements d’équipement, la liste des objets d’un emplacement avec recherche, puis la fiche détaillée avec ses statistiques. Tout est construit à partir du manifeste du jeu, en français.</p></section>
+        <section class="cs-block"><h2>Points techniques</h2><ul>
+        <li>Quatre requêtes dépendantes : manifeste → table des emplacements → table des objets (téléchargée une seule fois et gardée en mémoire) → une requête par statistique.</li>
+        <li>Code organisé en classes (<code>Codex</code>, <code>ApiBungie</code>, <code>Affichage</code>…), documenté par un diagramme de classes.</li>
+        <li>Affichage limité à 300 cartes pour rester fluide, icône par défaut si l’API n’en fournit pas, clé d’API hors du dépôt.</li>
+      </ul></section>
+        <section class="cs-block"><h2>Captures et documents</h2>
+          <div class="gallery">
+            <figure><button type="button" class="zoom" data-src="../assets/img/destiny/diagramme_classe_codex.png" data-caption="Diagramme de classes"><img src="../assets/img/destiny/diagramme_classe_codex.png" alt="Diagramme de classes" loading="lazy"></button><figcaption>Diagramme de classes</figcaption></figure>
+          </div>
+        </section>
+        <section class="cs-block"><h2>Extraits de code</h2>
+          <figure class="code">
+            <figcaption><span class="path">src/Codex.js</span><span class="note">La classe principale enchaîne les requêtes dépendantes.</span></figcaption>
+            <pre><code class="language-javascript">export default class Codex {
+  constructor(cle) {
+    this.api = new ApiBungie(cle);
+    this.affichage = new Affichage();
+
+    this.chemins = null; //requete 1
+    this.emplacements = []; //requete 2
+    this.objets = null; //reuete 3
+    this.nomsStats = {}; 
+    this.ficheActuelle = null; 
+  }
+
+  async demarrer() {
+    this.affichage.afficherMessage("Chargement du menu....");
+
+    try {
+      this.chemins = await this.api.chercherManifeste();
+      const donnees = await this.api.chercherDefinitions(this.chemins.DestinyInventoryBucketDefinition);
+      this.emplacements = this.creerEmplacements(donnees);
+      this.afficherMenu();
+    } catch (erreur) {
+      this.affichage.afficherErreur(erreur.message);
+    }
+  }
+  creerEmplacements(donnees) {
+    const liste = [];
+    for (const hash in donnees) {
+      const e = donnees[hash];
+      if (e.category === 3 &amp;&amp; e.displayProperties &amp;&amp; e.displayProperties.name) {
+        liste.push(new Emplacement(hash, e));
+      }
+    }
+    liste.sort(function (a, b) {
+      return a.ordre - b.ordre;
+    });
+    return liste;
+  }</code></pre>
+          </figure>
+          <figure class="code">
+            <figcaption><span class="path">src/ApiBungie.js</span><span class="note">Toutes les requêtes vers l’API passent par une seule classe.</span></figcaption>
+            <pre><code class="language-javascript">export default class ApiBungie {
+  constructor(cle) {
+    this.cle = cle;
+    this.adresse = "https://www.bungie.net";
+    this.langue = "fr";
+  }
+
+  // manifeste pour avoir tous les chemins des tables 
+  async chercherManifeste() {
+    const reponse = await fetch(this.adresse + "/Platform/Destiny2/Manifest/", {
+      headers: { "X-API-Key": this.cle },
+    });
+
+    if (!reponse.ok) {
+      throw new Error("Erreur sur le manifeste : " + reponse.status);
+    }
+
+    const donnees = await reponse.json();
+    return donnees.Response.jsonWorldComponentContentPaths[this.langue];
+  }
+
+  // a partir du chemin on vient récupérer le contenu de la table
+  async chercherDefinitions(chemin) {
+    const reponse = await fetch(this.adresse + chemin);
+
+    if (!reponse.ok) {
+      throw new Error("Erreur sur " + chemin + " : " + reponse.status);
+    }
+
+    const donnees = await reponse.json();
+    return donnees;
+  }
+
+  async chercherParHash(table, hash) {
+    const adresse = this.adresse + "/Platform/Destiny2/Manifest/" + table + "/" + hash + "/?lc=" + this.langue;
+    const reponse = await fetch(adresse, {
+      headers: { "X-API-Key": this.cle },
+    });
+
+    if (!reponse.ok) {
+      throw new Error("Erreur sur " + table + " " + hash + " : " + reponse.status);
+    }
+
+    const donnees = await reponse.json();
+    return donnees.Response;
+  }
+}</code></pre>
+          </figure>
+        </section>
+        </div>
+      </div>
+      <nav class="cs-nav" aria-label="Autres projets">
+        <a href="cgshop.html"><small>← Projet précédent</small>CG:SHOP 2027 Visualizer</a>
+        <a href="chatbot-wordpress.html"><small>Projet suivant →</small>Chatbot IA WordPress</a>
+      </nav>
+    </div>
+  </main>
+  <div class="lightbox" hidden><button type="button" class="lb-close" aria-label="Fermer">×</button><img alt=""><p></p></div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 Maxime Joppin · Site statique fait main, hébergé sur GitHub Pages</span>
+      <span><a href="https://www.linkedin.com/in/maxime-joppin" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp; <a href="https://github.com/MaximeJoppin" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp; <a href="#top">Retour en haut</a></span>
+    </div>
+  </footer>
+  <script src="../assets/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>window.hljs && hljs.highlightAll();</script>
+</body>
+</html>

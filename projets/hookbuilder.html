@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HookBuilder – Maxime Joppin</title>
+  <meta name="description" content="Module PrestaShop : un constructeur visuel de hooks, dans l’esprit d’Elementor.">
+  <meta name="theme-color" content="#0a0a09">
+  <meta property="og:title" content="HookBuilder – Maxime Joppin">
+  <meta property="og:description" content="Module PrestaShop : un constructeur visuel de hooks, dans l’esprit d’Elementor.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/img/mm/hero.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a09'/%3E%3Crect x='8' y='8' width='16' height='16' rx='3' fill='%23d1a00b'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/tomorrow-night.min.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="bg" aria-hidden="true"><div class="grid"></div><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="spot"></i></div>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="../index.html#top">Maxime Joppin</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="../index.html#projets">Projets</a></li>
+          <li><a href="../index.html#competences">Compétences</a></li>
+          <li><a href="../index.html#parcours">Parcours</a></li>
+          <li><a href="../assets/CV_Maxime_Joppin.pdf" target="_blank" rel="noopener">CV</a></li>
+          <li><a class="cta" href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" class="case">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Fil d’Ariane"><a href="../index.html#projets">← Tous les projets</a></nav>
+      <header class="cs-head" id="top">
+        <p class="kicker">Module PrestaShop</p>
+        <h1>HookBuilder</h1>
+        <p class="cs-tagline">Module PrestaShop : un constructeur visuel de hooks, dans l’esprit d’Elementor.</p>
+        
+      </header>
+      <figure class="cs-cover code-cover" aria-hidden="true"><div class="win"><i></i><i></i><i></i><span>ConditionResolver.php</span></div><pre>class ConditionResolver
+{
+    /** @var ConditionInterface[] type =&gt; instance */
+    private $registry = [];
+
+    /** @var Context */
+    private $context;
+
+    public function __construct(Context $context)
+    {
+        $this-&gt;context = $context;
+        $this-&gt;registerDefaults();
+    }
+
+    /**
+     * Register a custom condition type.
+     * Allows third-party modules to extend the condition system.
+     *</pre></figure>
+      <div class="cs-grid">
+        <aside class="cs-side">
+          <dl class="meta"><div><dt>Rôle</dt><dd>Conception et développement</dd></div><div><dt>Cible</dt><dd>PrestaShop 1.7+</dd></div><div><dt>Statut</dt><dd>Utilisé sur la boutique MaxTCG</dd></div></dl>
+          <h3>Technologies</h3>
+          <ul class="stack"><li>PHP</li><li>PrestaShop</li><li>Twig</li><li>JavaScript</li><li>SQL</li><li>JSON</li></ul>
+          <h3>Compétences BUT</h3>
+          <ul class="but"><li><b>C1</b> Réaliser un développement d’application</li><li><b>C4</b> Gérer des données</li></ul>
+        </aside>
+        <div class="cs-main">
+          <section class="cs-block lead"><h2>En bref</h2><p>Un module qui permet d’injecter du contenu HTML dans n’importe quel hook PrestaShop depuis le back-office, sans toucher au thème ni dépendre de modules payants.</p></section>
+        <section class="cs-block"><h2>Fonctionnalités</h2><ul>
+        <li>Pages personnalisées ou natives, réorganisation des blocs par glisser-déposer.</li>
+        <li>Import / export JSON des hooks (un bloc ou une page entière) : la page d’accueil de MaxTCG tient en 5 fichiers JSON.</li>
+        <li>Historique des modifications et conditions d’affichage (client connecté, groupe, appareil…) combinables en ET / OU.</li>
+        <li>Architecture en services (<code>HookBuilderService</code>, <code>HistoryService</code>, DTO, <code>ThemeCompatibilityService</code>) et conditions extensibles par interface.</li>
+      </ul></section>
+        <section class="cs-block"><h2>Extraits de code</h2>
+          <figure class="code">
+            <figcaption><span class="path">ConditionResolver.php</span><span class="note">Les conditions d’affichage sont des classes enregistrées dans un registre : un autre module peut ajouter ses propres types.</span></figcaption>
+            <pre><code class="language-php">class ConditionResolver
+{
+    /** @var ConditionInterface[] type =&gt; instance */
+    private $registry = [];
+
+    /** @var Context */
+    private $context;
+
+    public function __construct(Context $context)
+    {
+        $this-&gt;context = $context;
+        $this-&gt;registerDefaults();
+    }
+
+    /**
+     * Register a custom condition type.
+     * Allows third-party modules to extend the condition system.
+     *
+     * @param ConditionInterface $condition
+     */
+    public function register(ConditionInterface $condition)
+    {
+        $this-&gt;registry[$condition-&gt;getType()] = $condition;
+    }
+
+    /**
+     * Evaluate a conditions payload (JSON string or array).
+     * Returns true if all conditions pass (or if no conditions are set).
+     *
+     * @param string|array|null $conditionsPayload
+     * @return bool
+     */
+    public function evaluate($conditionsPayload)
+    {
+        if (empty($conditionsPayload)) {
+            return true;
+        }
+
+        if (is_string($conditionsPayload)) {
+            $payload = json_decode($conditionsPayload, true);
+            if (!is_array($payload)) {
+                return true; // Invalid JSON = no restriction
+            }
+        } else {
+            $payload = $conditionsPayload;
+        }
+
+        // Support wrapper format: {"logic": "or", "conditions": [...]}
+        if (isset($payload['logic']) &amp;&amp; isset($payload['conditions'])) {
+            return $this-&gt;evaluateGroup(
+                $payload['conditions'],
+                $payload['logic']
+            );
+        }</code></pre>
+          </figure>
+        </section>
+        </div>
+      </div>
+      <nav class="cs-nav" aria-label="Autres projets">
+        <a href="maxtcg.html"><small>← Projet précédent</small>MaxTCG</a>
+        <a href="custom-css-js.html"><small>Projet suivant →</small>Custom CSS &amp; JS</a>
+      </nav>
+    </div>
+  </main>
+  <div class="lightbox" hidden><button type="button" class="lb-close" aria-label="Fermer">×</button><img alt=""><p></p></div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 Maxime Joppin · Site statique fait main, hébergé sur GitHub Pages</span>
+      <span><a href="https://www.linkedin.com/in/maxime-joppin" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp; <a href="https://github.com/MaximeJoppin" target="_blank" rel="noopener">GitHub</a> &nbsp;|&nbsp; <a href="#top">Retour en haut</a></span>
+    </div>
+  </footer>
+  <script src="../assets/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>window.hljs && hljs.highlightAll();</script>
+</body>
+</html>
