@@ -70,7 +70,7 @@ const butChips = (codes) => `<ul class="but">${codes.map((c) => `<li><b>${c}</b>
 // Visuel d'une carte : image, ou « fenêtre de code » quand le projet n'a pas de capture
 const codeCover = (p, n) => `<div class="win"><i></i><i></i><i></i><span>${esc(p.code[0][2])}</span></div><pre>${esc(firstLines(p.coverCode, n))}</pre>`;
 const cardVisual = (p) => p.cover
-  ? `<div class="card-media${p.coverContain ? ' contain' : ''}"><img src="${p.cover}" alt="" loading="lazy"></div>`
+  ? `<div class="card-media${p.coverContain ? ' contain' : ''}"><img src="${p.cover}" alt="" loading="lazy">${p.embed ? '<span class="badge">Démo interactive</span>' : ''}</div>`
   : `<div class="card-media code-cover" aria-hidden="true">${codeCover(p, 14)}</div>`;
 
 // ---------------------------------------------------------------- Accueil
@@ -252,8 +252,16 @@ function renderProject(p, i) {
   const prev = projects[(i - 1 + projects.length) % projects.length];
   const next = projects[(i + 1) % projects.length];
 
-  const hero = p.cover
-    ? `<figure class="cs-cover${p.coverContain ? ' contain' : ''}"><img src="${b}${p.cover}" alt="${esc(p.title)}"></figure>`
+  const hero = p.embed
+    ? `<section class="embed" id="essayer" aria-label="${esc(p.embed.title)}">
+        <div class="embed-head"><h2>${esc(p.embed.title)}</h2><p>${esc(p.embed.note)}</p></div>
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>${esc(p.embed.url)}</span><a href="${b}${p.embed.src}" target="_blank" rel="noopener">Plein écran ↗</a></div>
+          <iframe src="${b}${p.embed.src}" title="${esc(p.embed.title)}" loading="lazy"></iframe>
+        </div>
+      </section>`
+    : p.cover
+    ?`<figure class="cs-cover${p.coverContain ? ' contain' : ''}"><img src="${b}${p.cover}" alt="${esc(p.title)}"></figure>`
     : `<figure class="cs-cover code-cover" aria-hidden="true">${codeCover(p, 18)}</figure>`;
 
   const meta = Object.entries(p.meta).map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
@@ -281,7 +289,7 @@ function renderProject(p, i) {
           </figure>`).join('')}
         </section>` : '';
 
-  const links = p.links.length ? `<div class="cs-links">${p.links.map(([t, href]) => `<a class="btn" href="${href}" target="_blank" rel="noopener">${esc(t)}</a>`).join('')}</div>` : '';
+  const links = p.links.length ? `<div class="cs-links">${p.links.map(([t, href, ext], k) => `<a class="btn${k ? ' ghost' : ''}" href="${href}"${ext ? ' target="_blank" rel="noopener"' : ''}>${esc(t)}</a>`).join('')}</div>` : '';
 
   const html = head(`${p.title} – Maxime Joppin`, p.tagline, b, p.code.length ? HLJS : '') + header(b) + `
   <main id="contenu" class="case">

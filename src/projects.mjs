@@ -80,7 +80,8 @@ export const projects = [
       ['demos/maxtcg/images/cat-riftbounds.png', 'Carte de catégorie Riftbound'],
     ],
     code: [],
-    links: [['Voir la démo interactive', '../demos/maxtcg/', true]],
+    links: [['Tester la boutique', '#essayer', false], ['Ouvrir en plein écran', '../demos/maxtcg/', true]],
+    embed: { src: 'demos/maxtcg/', url: 'MaxTCG · version démo',title: 'Essayez la boutique', note: 'Reconstitution fidèle de la boutique, en version autonome : catalogue d’exemple, filtres, fiche produit, panier, code promo MAXTCG10 et commande fictive. Aucun paiement réel.' },
   },
   {
     slug: 'hookbuilder',
