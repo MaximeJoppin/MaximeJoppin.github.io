@@ -45,7 +45,7 @@
         <p class="cs-tagline">Application web client riche qui explore l’équipement de Destiny 2 via l’API officielle de Bungie.</p>
         
       </header>
-      <figure class="cs-cover contain"><img src="../assets/img/destiny/diagramme_classe_codex.png" alt="Destiny 2 Codex"></figure>
+      <figure class="cs-cover"><img src="../assets/img/destiny/armes.jpg" alt="Destiny 2 Codex"></figure>
       <div class="cs-grid">
         <aside class="cs-side">
           <dl class="meta"><div><dt>Rôle</dt><dd>Développement complet</dd></div><div><dt>Module</dt><dd>R3.01 Développement web</dd></div><div><dt>Statut</dt><dd>Terminé</dd></div></dl>
@@ -55,7 +55,7 @@
           <ul class="but"><li><b>C1</b> Réaliser un développement d’application</li><li><b>C4</b> Gérer des données</li></ul>
         </aside>
         <div class="cs-main">
-          <section class="cs-block lead"><h2>En bref</h2><p>Trois écrans : les emplacements d’équipement, la liste des objets d’un emplacement avec recherche, puis la fiche détaillée avec ses statistiques. Tout est construit à partir du manifeste du jeu, en français.</p></section>
+          <section class="cs-block lead"><h2>En bref</h2><p>Trois écrans : les emplacements d’équipement, la liste des objets d’un emplacement avec recherche par nom et filtre par classe (Titan, Chasseur, Arcaniste), puis la fiche détaillée avec ses statistiques. Tout est construit à partir du manifeste du jeu, en français.</p></section>
         <section class="cs-block"><h2>Points techniques</h2><ul>
         <li>Quatre requêtes dépendantes : manifeste → table des emplacements → table des objets (téléchargée une seule fois et gardée en mémoire) → une requête par statistique.</li>
         <li>Code organisé en classes (<code>Codex</code>, <code>ApiBungie</code>, <code>Affichage</code>…), documenté par un diagramme de classes.</li>
@@ -63,6 +63,9 @@
       </ul></section>
         <section class="cs-block"><h2>Captures et documents</h2>
           <div class="gallery">
+            <figure><button type="button" class="zoom" data-src="../assets/img/destiny/menu.jpg" data-caption="Menu des emplacements, construit à partir d’une table de l’API"><img src="../assets/img/destiny/menu.jpg" alt="Menu des emplacements, construit à partir d’une table de l’API" loading="lazy"></button><figcaption>Menu des emplacements, construit à partir d’une table de l’API</figcaption></figure>
+            <figure><button type="button" class="zoom" data-src="../assets/img/destiny/armes.jpg" data-caption="Armes cinétiques : 459 résultats, 300 affichés pour rester fluide"><img src="../assets/img/destiny/armes.jpg" alt="Armes cinétiques : 459 résultats, 300 affichés pour rester fluide" loading="lazy"></button><figcaption>Armes cinétiques : 459 résultats, 300 affichés pour rester fluide</figcaption></figure>
+            <figure><button type="button" class="zoom" data-src="../assets/img/destiny/casques-filtre.jpg" data-caption="Casques avec recherche par nom et filtre par classe"><img src="../assets/img/destiny/casques-filtre.jpg" alt="Casques avec recherche par nom et filtre par classe" loading="lazy"></button><figcaption>Casques avec recherche par nom et filtre par classe</figcaption></figure>
             <figure><button type="button" class="zoom" data-src="../assets/img/destiny/diagramme_classe_codex.png" data-caption="Diagramme de classes"><img src="../assets/img/destiny/diagramme_classe_codex.png" alt="Diagramme de classes" loading="lazy"></button><figcaption>Diagramme de classes</figcaption></figure>
           </div>
         </section>

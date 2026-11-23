@@ -378,6 +378,7 @@ h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); letter-spacing: -.02em; }
 .cs-cover.contain img { object-fit: contain; padding: 1.5rem; }
 .cs-cover.code-cover pre { font-size: .82rem; max-height: 380px; }
 .cs-grid { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.cs-grid > * { min-width: 0; }
 @media (max-width: 900px) { .cs-grid { grid-template-columns: 1fr; } }
 .cs-side { position: sticky; top: 6rem; display: grid; gap: 1rem; }
 @media (max-width: 900px) { .cs-side { position: static; } }

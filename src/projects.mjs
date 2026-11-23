@@ -162,13 +162,12 @@ export const projects = [
     title: 'Destiny 2 Codex',
     tagline: 'Application web client riche qui explore l’équipement de Destiny 2 via l’API officielle de Bungie.',
     category: 'Projet universitaire · R3.01',
-    cover: 'assets/img/destiny/diagramme_classe_codex.png',
-    coverContain: true,
+    cover: 'assets/img/destiny/armes.jpg',
     year: '2026',
     meta: { Rôle: 'Développement complet', Module: 'R3.01 Développement web', Statut: 'Terminé' },
     stack: ['JavaScript ES6', 'POO', 'Webpack 5', 'API REST', 'HTML / CSS'],
     but: ['C1', 'C4'],
-    summary: `Trois écrans : les emplacements d’équipement, la liste des objets d’un emplacement avec recherche, puis la fiche détaillée avec ses statistiques. Tout est construit à partir du manifeste du jeu, en français.`,
+    summary: `Trois écrans : les emplacements d’équipement, la liste des objets d’un emplacement avec recherche par nom et filtre par classe (Titan, Chasseur, Arcaniste), puis la fiche détaillée avec ses statistiques. Tout est construit à partir du manifeste du jeu, en français.`,
     sections: [
       ['Points techniques', `<ul>
         <li>Quatre requêtes dépendantes : manifeste → table des emplacements → table des objets (téléchargée une seule fois et gardée en mémoire) → une requête par statistique.</li>
@@ -176,7 +175,12 @@ export const projects = [
         <li>Affichage limité à 300 cartes pour rester fluide, icône par défaut si l’API n’en fournit pas, clé d’API hors du dépôt.</li>
       </ul>`],
     ],
-    gallery: [['assets/img/destiny/diagramme_classe_codex.png', 'Diagramme de classes']],
+    gallery: [
+      ['assets/img/destiny/menu.jpg', 'Menu des emplacements, construit à partir d’une table de l’API'],
+      ['assets/img/destiny/armes.jpg', 'Armes cinétiques : 459 résultats, 300 affichés pour rester fluide'],
+      ['assets/img/destiny/casques-filtre.jpg', 'Casques avec recherche par nom et filtre par classe'],
+      ['assets/img/destiny/diagramme_classe_codex.png', 'Diagramme de classes'],
+    ],
     code: [['destiny-codex.js', 'javascript', 'src/Codex.js', 'La classe principale enchaîne les requêtes dépendantes.'], ['destiny-api.js', 'javascript', 'src/ApiBungie.js', 'Toutes les requêtes vers l’API passent par une seule classe.']],
     links: [],
   },
